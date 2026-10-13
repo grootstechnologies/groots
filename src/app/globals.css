@@ -1,0 +1,463 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-poppins);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* === GROOTS brand palette (2026 re-brand) === */
+  --brand-primary:    #071D3A; /* deep navy       — primary   */
+  --brand-secondary:  #0878E8; /* royal blue      — secondary */
+  --brand-accent1:    #00B8E6; /* cyan            — accent 1  */
+  --brand-accent2:    #00AFA8; /* teal            — accent 2  */
+  --brand-accent3:    #32D583; /* fresh green     — accent 3  */
+  --brand-ink:        #03101F; /* darker navy (for very dark backgrounds) */
+  --brand-tint1:      #E0F7FA; /* very light cyan tint */
+  --brand-tint2:      #7FE5F2; /* light cyan (highlights) */
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Aceternity Infinite Moving Cards scroll animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+/* Simple fade-in for AnimateCount — no count-up, just render. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* Aceternity Moving Border gradient animation */
+@keyframes moving-border-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ===== Magic UI animations ===== */
+
+/* Marquee - horizontal/vertical infinite scroll */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+}
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+/* Animated gradient text - shifting background-position */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.animate-gradient {
+  background-size: var(--bg-size, 300%) 100%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Shine border - background-position oscillation */
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+.animate-shine {
+  animation: shine var(--duration, 14s) ease-in-out infinite;
+}
+
+/* Orbiting circles - circular motion. Direct rotate transform on the
+   orbit item — rotate to its starting angle, then translate outward by
+   radius, then counter-rotate to keep icon upright. */
+@keyframes orbit-spin {
+  from {
+    transform: rotate(var(--angle, 0deg)) translateY(calc(var(--radius, 160) * -1px)) rotate(calc(var(--angle, 0deg) * -1));
+  }
+  to {
+    transform: rotate(calc(var(--angle, 0deg) + 360deg)) translateY(calc(var(--radius, 160) * -1px)) rotate(calc(var(--angle, 0deg) * -1 - 360deg));
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--duration, 40s) linear infinite;
+  }
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration, 40s) linear infinite;
+  }
+  .animate-gradient {
+    background-size: var(--bg-size, 300%) 100%;
+    animation: gradient-shift 8s ease infinite;
+  }
+  .animate-shine {
+    animation: shine var(--duration, 14s) ease-in-out infinite;
+  }
+  .animate-orbit {
+    animation: orbit var(--duration, 20s) linear infinite;
+  }
+}
+
+/* ===== Hero cinematic effects ===== */
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Ambient aurora blobs — slow drifting color washes */
+@keyframes hero-aurora-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(70px, 45px) scale(1.16);
+  }
+}
+@keyframes hero-aurora-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-55px, -38px) scale(1.12);
+  }
+}
+@keyframes hero-aurora-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(45px, -32px) scale(1.2);
+  }
+}
+.hero-aurora-a {
+  animation: hero-aurora-a 18s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-aurora-b {
+  animation: hero-aurora-b 23s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-aurora-c {
+  animation: hero-aurora-c 27s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Breathing glow behind the professional — translate is baked into the
+   keyframe because these layers are centered with left/top 50% */
+@keyframes hero-glow {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.14);
+    opacity: 1;
+  }
+}
+.hero-glow-a {
+  animation: hero-glow 6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.hero-glow-b {
+  animation: hero-glow 9.5s 1.4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.hero-glow-c {
+  animation: hero-glow 4.6s 0.7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Orbit rings — slow counter-rotating dashed circles */
+@keyframes hero-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hero-ring-spin {
+  animation: hero-ring-spin 38s linear infinite;
+  will-change: transform;
+}
+.hero-ring-spin-rev {
+  animation: hero-ring-spin 54s linear infinite reverse;
+  will-change: transform;
+}
+
+/* Halo ping — breathing ring behind icons */
+@keyframes hero-halo {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+.hero-halo {
+  animation: hero-halo 3.4s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Idle sheen sweep on the primary CTA (one pass, long pause, repeat) */
+@keyframes hero-sheen-x {
+  0% {
+    transform: translateX(-170%) skewX(-14deg);
+  }
+  16%,
+  100% {
+    transform: translateX(460%) skewX(-14deg);
+  }
+}
+
+/* Journey arrows — gentle staggered nudge */
+@keyframes hero-arrow-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+}
+.hero-arrow {
+  animation: hero-arrow-nudge 2.4s ease-in-out infinite;
+}
+
+/* Rotating conic border sheen (journey card) */
+@keyframes hero-spin {
+  to {
+    --angle: 360deg;
+  }
+}
+.hero-border-sheen {
+  position: relative;
+}
+.hero-border-sheen::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    rgba(242, 103, 34, 0.5) 42deg,
+    transparent 84deg,
+    transparent 185deg,
+    rgba(12, 59, 43, 0.32) 218deg,
+    transparent 252deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: hero-spin 9s linear infinite;
+  pointer-events: none;
+}
+
+/* Film grain overlay */
+.hero-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-aurora-a,
+  .hero-aurora-b,
+  .hero-aurora-c,
+  .hero-glow-a,
+  .hero-glow-b,
+  .hero-glow-c,
+  .hero-ring-spin,
+  .hero-ring-spin-rev,
+  .hero-halo,
+  .hero-arrow,
+  .hero-border-sheen::before {
+    animation: none !important;
+  }
+  .hero-glow-a,
+  .hero-glow-b,
+  .hero-glow-c {
+    transform: translate(-50%, -50%) !important;
+  }
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 54" fill="none">
+  <g transform="translate(4, 5)">
+    <!-- Hexaware Geometric Hexagon Icon -->
+    <path d="M8 22L20 4H36L48 22L36 40H20L8 22Z" fill="#0066FF" fill-opacity="0.08" stroke="#0066FF" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M20 4L36 40" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M36 4L20 40" stroke="#0066FF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M13 22H43" stroke="#0052CC" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="28" cy="22" r="4.5" fill="#0B132B"/>
+    
+    <!-- HEXAWARE Typography -->
+    <text x="58" y="29" font-family="'Inter', 'Segoe UI', -apple-system, sans-serif" font-size="20" font-weight="900" letter-spacing="1.2" fill="#0F172A">
+      HEXAWARE
+    </text>
+  </g>
+</svg>

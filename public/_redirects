@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+# Single-page marketing site — no redirects needed by default.
+# Add 301 redirects here if you change URL structure later, e.g.:
+# /old-path  /new-path  301

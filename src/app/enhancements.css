@@ -1,0 +1,597 @@
+/* ==========================================================================
+   ENHANCEMENTS.CSS
+   Strictly Additive Visual Polish (Powered by ui-ux-pro-max design intelligence)
+   - Brand colors matched to GROOTS logo: Corporate Forest Green (#0878E8, #03101F, #071D3A) & Logo Orange (#32D583)
+   - Zero layout shifts, zero overrides, zero !important
+   - Fully accessible with prefers-reduced-motion and high-contrast compliance
+   ========================================================================== */
+
+/* 1. Global Polish: Smooth Scrolling & Custom Selection */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: rgba(22, 101, 52, 0.22);
+  color: #03101F;
+}
+
+::-moz-selection {
+  background-color: rgba(22, 101, 52, 0.22);
+  color: #03101F;
+}
+
+/* 2. Custom Sleek Scrollbar (Non-disruptive, 8px) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(6, 33, 23, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(22, 101, 52, 0.32);
+  border-radius: var(--radius, 8px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 88, 12, 0.6);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(22, 101, 52, 0.32) rgba(6, 33, 23, 0.03);
+}
+
+/* 3. Accessible Focus-Visible Glow (WCAG 2.2 Compliant) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(22, 101, 52, 0.65);
+  outline-offset: 2px;
+}
+
+/* 4. Subtle Micro-Interactions on Interactive Elements */
+a, button {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+}
+
+/* Tactile press response for buttons */
+button:active:not(:disabled),
+a[role="button"]:active {
+  transform: scale(0.98);
+}
+
+/* 5. Form Fields Polish: Gentle border transition */
+input, textarea {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 6. Reduced Motion Support: Honor user accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+
+/* ==========================================================================
+   VISUAL FX LAYER v2 — cinematic "wow" pass
+   Strictly additive decoration: no text, image, or layout content changes.
+   Every decorative layer is pointer-events:none and honours reduced motion.
+   ========================================================================== */
+
+/* A. Cinematic page entrance — doubles as a client-side page transition,
+      because Next.js remounts <main> on route change (fill:backwards leaves
+      no residual transform after it finishes). */
+@keyframes gr-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+main {
+  animation: gr-page-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* B. Dark hero ambience — blueprint grid texture + breathing corner glows.
+      Sections create their own stacking context (isolation) so the negative
+      z-index layers sit above the section background but below all content. */
+main section.bg-\[\#03101F\] {
+  isolation: isolate;
+}
+main section.bg-\[\#03101F\]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 80%);
+}
+main section.bg-\[\#03101F\]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 55% at 10% 90%, rgba(16, 185, 129, 0.16), transparent 70%),
+    radial-gradient(32% 46% at 90% 84%, rgba(234, 88, 12, 0.13), transparent 72%);
+  animation: gr-hero-breathe 9s ease-in-out infinite;
+}
+@keyframes gr-hero-breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* C. Floating particles (elements injected by enhancements.js) */
+.gr-particle {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(110, 231, 183, 0.95) 0%, rgba(52, 211, 153, 0.35) 45%, rgba(52, 211, 153, 0) 72%);
+  animation: gr-float var(--dur, 14s) ease-in-out var(--delay, 0s) infinite;
+}
+.gr-particle.gr-amber {
+  background: radial-gradient(circle, rgba(253, 186, 116, 0.95) 0%, rgba(234, 88, 12, 0.35) 45%, rgba(234, 88, 12, 0) 72%);
+}
+@keyframes gr-float {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: var(--o, 0.4); }
+  33% { transform: translate3d(16px, -24px, 0); opacity: calc(var(--o, 0.4) * 1.5); }
+  66% { transform: translate3d(-14px, -10px, 0); opacity: var(--o, 0.4); }
+}
+
+/* D. Flowing gradient on hero display titles (reuses gradient-shift keyframes
+      already defined in globals.css) */
+main h1 span[class*="bg-gradient-to-r"] {
+  background-size: 220% 220%;
+  animation: gradient-shift 7s ease infinite;
+}
+
+/* E. Sheen sweep on primary orange CTAs (pure hover decoration) */
+main a[class*="from-[#32D583]"],
+main button[class*="from-[#32D583]"] {
+  position: relative;
+  overflow: hidden;
+}
+main a[class*="from-[#32D583]"]::after,
+main button[class*="from-[#32D583]"]::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  width: 34%;
+  left: -60%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+main a[class*="from-[#32D583]"]:hover::after,
+main button[class*="from-[#32D583]"]:hover::after {
+  left: 135%;
+}
+
+/* F. Mouse-tracking spotlight on cards (overlay div injected by JS;
+      border-radius:inherit keeps the glow inside the card shape) */
+.gr-spot-host {
+  position: relative;
+}
+.gr-spot-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(16, 185, 129, 0.11),
+    rgba(16, 185, 129, 0.035) 45%,
+    transparent 68%
+  );
+}
+.gr-spot-host:hover .gr-spot-glow,
+.gr-spot-host:focus-within .gr-spot-glow {
+  opacity: 1;
+}
+
+/* G. Pulsing live dot injected into dark-hero badge pills */
+.gr-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  flex: none;
+  background: #00B8E6;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.9);
+  position: relative;
+}
+.gr-pill-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(52, 211, 153, 0.7);
+  animation: gr-halo-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes gr-halo-ping {
+  0% { transform: scale(0.55); opacity: 1; }
+  80%, 100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* H. Shimmering top edge on bordered sections */
+main section.border-t {
+  position: relative;
+}
+main section.border-t::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 4%,
+    rgba(16, 185, 129, 0.6) 30%,
+    rgba(234, 88, 12, 0.45) 62%,
+    transparent 96%
+  );
+  background-size: 220% 100%;
+  animation: gr-shimmer-x 7s linear infinite;
+  opacity: 0.75;
+}
+@keyframes gr-shimmer-x {
+  from { background-position: 190% 0; }
+  to { background-position: -90% 0; }
+}
+
+/* I. Back-to-top button (injected by enhancements.js) */
+.gr-top-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 90;
+  width: 46px;
+  height: 46px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: linear-gradient(135deg, #0878E8, #03101F);
+  box-shadow:
+    0 10px 26px rgba(6, 33, 23, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+.gr-top-btn.gr-on {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.gr-top-btn:hover {
+  box-shadow:
+    0 14px 34px rgba(22, 101, 52, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+/* J. Smooth FAQ open/close where the browser supports it */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  main details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      content-visibility 0.35s allow-discrete;
+  }
+  main details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* K. CRT curriculum — vertical timeline spine behind the phase cards */
+@media (min-width: 768px) {
+  main section#curriculum .space-y-5,
+  main section#curriculum .space-y-6 {
+    isolation: isolate;
+    position: relative;
+  }
+  main section#curriculum .space-y-5::before,
+  main section#curriculum .space-y-6::before {
+    content: "";
+    position: absolute;
+    left: 27px;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    z-index: -1;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.55), rgba(234, 88, 12, 0.4));
+    opacity: 0.5;
+  }
+}
+
+/* L. Privacy prose accents (decoration only, text untouched) */
+main .prose h2 {
+  position: relative;
+  padding-left: 14px;
+}
+main .prose h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.34em;
+  bottom: 0.34em;
+  width: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #32D583, #32D583);
+}
+main .prose code {
+  background: rgba(22, 101, 52, 0.08);
+  border: 1px solid rgba(22, 101, 52, 0.16);
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: #0878E8;
+}
+main .prose ul > li::marker {
+  color: #32D583;
+}
+
+/* M. Global reduced-motion kill switch for every FX-layer animation */
+@media (prefers-reduced-motion: reduce) {
+  main,
+  main section.bg-\[\#03101F\]::after,
+  .gr-particle,
+  .gr-pill-dot::after,
+  main section.border-t::before,
+  main h1 span[class*="bg-gradient-to-r"] {
+    animation: none !important;
+  }
+  main {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   N. Styling pass v22.6 — site-wide visual polish.
+      Decoration only: texture, motion, focus, rhythm.
+      No copy/content is touched; complements layers A–M.
+   ============================================================ */
+
+/* N1. Typography rhythm — balanced display lines, tidy paragraphs */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+main p, footer p {
+  text-wrap: pretty;
+}
+
+/* N2. Anchor jumps land below the fixed header */
+html {
+  scroll-padding-top: 96px;
+}
+
+/* N3. Brand scrollbar (thin, gradient thumb) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(8, 120, 232, 0.45) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(7, 29, 58, 0.04);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 2.5px solid transparent;
+  background: linear-gradient(180deg, #0878E8, #00B8E6) padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0878E8, #32D583) padding-box;
+}
+
+/* N4. Brand selection + accessible focus ring */
+::selection {
+  background: rgba(0, 184, 230, 0.24);
+  color: #071D3A;
+}
+:focus-visible {
+  outline: 2px solid rgba(8, 120, 232, 0.8);
+  outline-offset: 2px;
+}
+
+/* N5. Glass stat tiles (dark heroes) — cyan top hairline, brightens on hover */
+.gr-glass {
+  position: relative;
+  overflow: hidden;
+}
+.gr-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1.5px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(127, 229, 242, 0.85), transparent);
+  opacity: 0.65;
+  transition: opacity 0.3s ease;
+}
+.gr-glass:hover::before {
+  opacity: 1;
+}
+
+/* N6. Card top accent — gradient bar slides across on hover */
+.gr-accent-top {
+  position: relative;
+  overflow: hidden;
+}
+.gr-accent-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1;
+  background: linear-gradient(90deg, #32D583, #00B8E6 55%, #0878E8);
+  transform: scaleX(0.25);
+  transform-origin: left;
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  pointer-events: none;
+}
+.gr-accent-top:hover::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* N7. Unified card lift — ONLY for cards outside TiltCard hosts
+      (TiltCard drives transform inline; never double-drive it) */
+.gr-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.gr-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px -18px rgba(7, 29, 58, 0.2);
+}
+
+/* N8. Decorative quote ornament on testimonial cards */
+.gr-quote::after {
+  content: "\201C";
+  position: absolute;
+  top: 0.55rem;
+  right: 1.35rem;
+  font-family: var(--font-poppins), ui-sans-serif, system-ui;
+  font-size: 5rem;
+  line-height: 1;
+  font-weight: 800;
+  color: rgba(8, 120, 232, 0.09);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* N9. Step number badge — brand ring + depth */
+.gr-step-num {
+  box-shadow:
+    0 0 0 4px rgba(8, 120, 232, 0.14),
+    0 6px 14px -4px rgba(8, 120, 232, 0.45);
+}
+
+/* N10. Data tables (course tooling) — soft row highlight */
+main table tbody tr {
+  transition: background-color 0.25s ease;
+}
+main table tbody tr:hover {
+  background-color: rgba(0, 184, 230, 0.06);
+}
+
+/* N11. Faint dot texture for alternating light sections */
+.gr-dots {
+  background-image: radial-gradient(rgba(8, 120, 232, 0.07) 1px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+
+/* N12. Forms — brand caret on every field (visuals untouched otherwise) */
+.gr-form input,
+.gr-form select,
+.gr-form textarea {
+  caret-color: #0878E8;
+}
+
+/* N13. Legal / long-form document card — faint paper gradient */
+.gr-doc {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+/* N14. Reduced-motion guards for the new layer */
+@media (prefers-reduced-motion: reduce) {
+  .gr-accent-top::before {
+    transition: none;
+  }
+  .gr-lift,
+  .gr-lift:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   O. Premium pass v22.9 — site-wide cohesion with the new hero.
+      Floating chips, medallion helpers, logo card polish.
+      Decoration only; honours reduced motion.
+   ============================================================ */
+
+/* O1. Gentle float for server-rendered glass chips (StudentsHired) */
+@keyframes gr-floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+.gr-floaty {
+  animation: gr-floaty 5.2s ease-in-out infinite;
+  will-change: transform;
+}
+.gr-floaty-late {
+  animation-delay: 1.7s;
+}
+
+/* O2. Logo cards — crisper resting state so faint logos don't wash out */
+.logo-card {
+  box-shadow: 0 1px 2px rgba(7, 29, 58, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.logo-card:hover {
+  box-shadow: 0 12px 28px -10px rgba(8, 120, 232, 0.22);
+}
+
+/* O3. Reduced-motion guard for layer O */
+@media (prefers-reduced-motion: reduce) {
+  .gr-floaty,
+  .gr-floaty-late {
+    animation: none;
+  }
+}

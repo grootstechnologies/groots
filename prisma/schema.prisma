@@ -1,0 +1,23 @@
+// Prisma schema for Greenroots Website & Lead Management
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String?
+  course    String?
+  source    String?  // e.g. "contact-page", "home-contact", "trainer-application", "curriculum-download"
+  status    String?  // e.g. "student", "working-professional", "job-seeker", "trainer"
+  message   String?
+  metadata  String?  // JSON string for additional attributes
+  createdAt DateTime @default(now())
+}

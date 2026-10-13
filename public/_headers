@@ -1,0 +1,49 @@
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:;
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicons — never cache (we version-bust with ?v=2)
+/favicon.ico
+  Cache-Control: no-cache, must-revalidate
+
+/favicon.png
+  Cache-Control: no-cache, must-revalidate
+
+/apple-touch-icon.png
+  Cache-Control: no-cache, must-revalidate
+
+/favicon-32x32.png
+  Cache-Control: no-cache, must-revalidate
+
+/favicon-16x16.png
+  Cache-Control: no-cache, must-revalidate
+
+/icon-512.png
+  Cache-Control: no-cache, must-revalidate
+
+# Images — long cache
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/logos/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Sitemap and robots — refresh frequently
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
