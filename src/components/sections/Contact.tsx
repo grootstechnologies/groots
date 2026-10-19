@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
   SITE_PHONE_DISPLAY,
@@ -101,12 +101,16 @@ export function Contact() {
                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">
                   Phone
                 </h3>
-                <p className="mt-1.5 text-[#071D3A] font-bold text-base">
+                <p className="mt-1.5 text-[#071D3A] font-bold text-sm">
                   <a href={SITE_PHONE_TEL} className="hover:text-[#0878E8] transition-colors">
-                    {SITE_PHONE_DISPLAY}
+                    Hyderabad: {SITE_PHONE_DISPLAY}
                   </a>
                 </p>
-                <p className="mt-1 text-xs text-gray-500">Same official number for both campuses</p>
+                <p className="mt-1 text-[#071D3A] font-bold text-sm">
+                  <a href={BENGALURU_OFFICE.phoneHref} className="hover:text-[#0878E8] transition-colors">
+                    Bengaluru: {BENGALURU_OFFICE.phone}
+                  </a>
+                </p>
               </div>
               <div className="bg-white rounded-2xl p-5 sm:p-7 border border-gray-200/80 shadow-xs hover:shadow-md transition-all duration-300">
                 <div className="h-11 w-11 rounded-xl bg-[#0878E8]/10 text-[#0878E8] flex items-center justify-center mb-3.5 ring-1 ring-[#0878E8]/20">
@@ -138,13 +142,25 @@ export function Contact() {
               <div className="space-y-4">
                 {OFFICES.map((loc, i) => (
                   <div key={`loc-${i}`} className="rounded-xl bg-gray-50/80 border border-gray-100 p-4">
-                    <h4 className="text-sm font-bold text-[#071D3A]">
-                      {loc.label}
-                    </h4>
-                    <p className="mt-1 text-sm text-gray-600 leading-relaxed">
-                      {loc.fullAddress}
-                    </p>
-                    <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+                    <a
+                      href={loc.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/loc block hover:opacity-95"
+                      title={`Open ${loc.label} in Google Maps`}
+                    >
+                      <h4 className="text-sm font-bold text-[#071D3A] flex items-center justify-between group-hover/loc:text-[#0878E8] transition-colors">
+                        <span>{loc.label}</span>
+                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#0878E8] bg-[#0878E8]/10 group-hover/loc:bg-[#0878E8] group-hover/loc:text-white px-2 py-0.5 rounded-full transition-all">
+                          <span>Map</span>
+                          <ExternalLink className="h-2.5 w-2.5" />
+                        </span>
+                      </h4>
+                      <p className="mt-1 text-sm text-gray-600 group-hover/loc:text-slate-900 leading-relaxed group-hover/loc:underline decoration-[#0878E8]/40 underline-offset-2 transition-colors">
+                        {loc.fullAddress}
+                      </p>
+                    </a>
+                    <div className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1 text-sm pt-2 border-t border-gray-200/60">
                       <a href={loc.phoneHref} className="inline-flex items-center gap-1.5 font-semibold text-[#071D3A] hover:text-[#0878E8] transition-colors">
                         <Phone className="h-3.5 w-3.5 text-[#0878E8]" />
                         {loc.phone}

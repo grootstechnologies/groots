@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
-import { Phone, Mail, MapPin, Clock, Globe, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Globe, ArrowRight, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import TiltCard from "@/components/smoothui/tilt-card";
 import BorderBeam from "@/components/smoothui/border-beam";
@@ -126,11 +126,13 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] uppercase tracking-wider font-bold text-slate-400">Phone (Official)</div>
-                    <a href={SITE_PHONE_TEL} className="text-base sm:text-lg font-bold text-gray-900 hover:text-[#0878E8] transition-colors">
-                      {SITE_PHONE_DISPLAY}
+                    <div className="text-[11px] uppercase tracking-wider font-bold text-slate-400">Phone</div>
+                    <a href={SITE_PHONE_TEL} className="block text-base sm:text-lg font-bold text-gray-900 hover:text-[#0878E8] transition-colors">
+                      Hyderabad: {SITE_PHONE_DISPLAY}
                     </a>
-                    <div className="text-xs text-slate-500 mt-0.5">Hyderabad &amp; Bengaluru</div>
+                    <a href={BENGALURU_OFFICE.phoneHref} className="block text-base sm:text-lg font-bold text-gray-900 hover:text-[#0878E8] transition-colors mt-0.5">
+                      Bengaluru: {BENGALURU_OFFICE.phone}
+                    </a>
                   </div>
                 </div>
 
@@ -165,20 +167,43 @@ export default function ContactPage() {
                   <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-[#32D583] to-[#0878E8] text-white flex items-center justify-center shrink-0 shadow-md">
                     <MapPin className="h-5 w-5" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-[11px] uppercase tracking-wider font-bold text-slate-400">Office Addresses</div>
-                    <div className="text-sm sm:text-base font-semibold text-gray-900 leading-snug mt-1">
-                      {HYDERABAD_OFFICE.label}
-                    </div>
-                    <div className="text-sm text-gray-600 leading-snug">
-                      {HYDERABAD_OFFICE.fullAddress}
-                    </div>
-                    <div className="text-sm sm:text-base font-semibold text-gray-900 leading-snug mt-3">
-                      {BENGALURU_OFFICE.label}
-                    </div>
-                    <div className="text-sm text-gray-600 leading-snug">
-                      {BENGALURU_OFFICE.fullAddress}
-                    </div>
+                    <a
+                      href={HYDERABAD_OFFICE.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block group/hyd mt-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0878E8] rounded-lg"
+                      title="Open Hyderabad Headquarters in Google Maps"
+                    >
+                      <div className="text-sm sm:text-base font-semibold text-gray-900 group-hover/hyd:text-[#0878E8] leading-snug flex items-center justify-between gap-1 transition-colors">
+                        <span>{HYDERABAD_OFFICE.label}</span>
+                        <span className="inline-flex items-center gap-1 text-[10px] text-[#0878E8] font-semibold bg-[#0878E8]/10 group-hover/hyd:bg-[#0878E8] group-hover/hyd:text-white px-2 py-0.5 rounded-full transition-all">
+                          Map <ExternalLink className="h-2.5 w-2.5" />
+                        </span>
+                      </div>
+                      <div className="text-sm text-gray-600 group-hover/hyd:text-slate-900 group-hover/hyd:underline decoration-[#0878E8]/40 underline-offset-2 leading-snug transition-colors mt-0.5">
+                        {HYDERABAD_OFFICE.fullAddress}
+                      </div>
+                    </a>
+
+                    <a
+                      href={BENGALURU_OFFICE.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block group/blr mt-3 pt-3 border-t border-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0878E8] rounded-lg"
+                      title="Open Bengaluru Office in Google Maps"
+                    >
+                      <div className="text-sm sm:text-base font-semibold text-gray-900 group-hover/blr:text-[#0878E8] leading-snug flex items-center justify-between gap-1 transition-colors">
+                        <span>{BENGALURU_OFFICE.label}</span>
+                        <span className="inline-flex items-center gap-1 text-[10px] text-[#0878E8] font-semibold bg-[#0878E8]/10 group-hover/blr:bg-[#0878E8] group-hover/blr:text-white px-2 py-0.5 rounded-full transition-all">
+                          Map <ExternalLink className="h-2.5 w-2.5" />
+                        </span>
+                      </div>
+                      <div className="text-sm text-gray-600 group-hover/blr:text-slate-900 group-hover/blr:underline decoration-[#0878E8]/40 underline-offset-2 leading-snug transition-colors mt-0.5">
+                        {BENGALURU_OFFICE.fullAddress}
+                      </div>
+                    </a>
                   </div>
                 </div>
 

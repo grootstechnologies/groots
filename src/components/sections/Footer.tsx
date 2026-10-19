@@ -7,6 +7,7 @@ import {
   Linkedin,
   Instagram,
   Youtube,
+  ExternalLink,
 } from "lucide-react";
 import { DualLogo } from "@/components/logo";
 import {
@@ -57,9 +58,15 @@ const SOCIALS = [
 
 const CONTACT_CHIPS = [
   {
-    label: "Phone",
-    value: SITE_PHONE_DISPLAY,
+    label: "Phone — Hyderabad",
+    value: `Hyd: ${SITE_PHONE_DISPLAY}`,
     href: SITE_PHONE_TEL,
+    Icon: Phone,
+  },
+  {
+    label: "Phone — Bengaluru",
+    value: `Blr: ${BENGALURU_OFFICE.phone}`,
+    href: BENGALURU_OFFICE.phoneHref,
     Icon: Phone,
   },
   {
@@ -124,29 +131,43 @@ export function Footer() {
               {OFFICES.map((o) => (
                 <div
                   key={o.id}
-                  className="gr-lift rounded-2xl border border-slate-200/90 bg-white/70 p-4 shadow-xs"
+                  className="gr-lift rounded-2xl border border-slate-200/90 bg-white/70 p-4 shadow-xs hover:border-[#0878E8]/40 hover:shadow-md transition-all flex flex-col justify-between"
                 >
-                  <h4 className="text-xs font-bold text-[#071D3A] uppercase tracking-wider flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5 text-[#0878E8]" />
-                    {o.label}
-                  </h4>
-                  <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-snug">
-                    {o.fullAddress}
-                  </p>
-                  <div className="mt-2.5 space-y-1.5 text-xs sm:text-sm">
+                  <a
+                    href={o.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/loc block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0878E8] rounded-lg"
+                    title={`Open ${o.label} in Google Maps`}
+                  >
+                    <div className="flex items-center justify-between gap-1.5">
+                      <h4 className="text-xs font-bold text-[#071D3A] uppercase tracking-wider flex items-center gap-1.5 group-hover/loc:text-[#0878E8] transition-colors">
+                        <MapPin className="h-3.5 w-3.5 text-[#0878E8] shrink-0" />
+                        <span>{o.label}</span>
+                      </h4>
+                      <span className="inline-flex items-center gap-1 text-[10px] normal-case font-semibold text-[#0878E8] bg-[#0878E8]/10 group-hover/loc:bg-[#0878E8] group-hover/loc:text-white px-2 py-0.5 rounded-full transition-all">
+                        <span>Map</span>
+                        <ExternalLink className="h-2.5 w-2.5" />
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs sm:text-sm text-slate-600 group-hover/loc:text-slate-900 group-hover/loc:underline decoration-[#0878E8]/50 underline-offset-2 leading-snug transition-colors">
+                      {o.fullAddress}
+                    </p>
+                  </a>
+                  <div className="mt-3 pt-2.5 border-t border-slate-100 space-y-1.5 text-xs sm:text-sm">
                     <a
                       href={o.phoneHref}
                       className="flex items-center gap-1.5 font-semibold text-slate-700 hover:text-[#0878E8] transition-colors"
                     >
                       <Phone className="h-3.5 w-3.5 text-[#0878E8] shrink-0" />
-                      {o.phone}
+                      <span>{o.phone}</span>
                     </a>
                     <a
                       href={`mailto:${o.email}`}
                       className="flex items-center gap-1.5 font-semibold text-slate-700 hover:text-[#0878E8] transition-colors break-all"
                     >
                       <Mail className="h-3.5 w-3.5 text-[#0878E8] shrink-0" />
-                      {o.email}
+                      <span>{o.email}</span>
                     </a>
                   </div>
                 </div>

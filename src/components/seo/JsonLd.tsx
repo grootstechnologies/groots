@@ -126,7 +126,7 @@ const CONTACT_POINTS = [
   {
     "@type": "ContactPoint",
     contactType: "admissions",
-    telephone: SITE_PHONE_DISPLAY,
+    telephone: BENGALURU_OFFICE.phone,
     email: EMAIL_BENGALURU,
     areaServed: ["Bengaluru", "Bangalore", "Karnataka"],
     availableLanguage: ["English", "Kannada", "Hindi"],
@@ -237,6 +237,7 @@ export function LocalBusinessJsonLd() {
         email: EMAIL_HYDERABAD,
         address: HYDERABAD_ADDRESS,
         geo: HYDERABAD_GEO,
+        hasMap: HYDERABAD_OFFICE.mapUrl,
         openingHoursSpecification: [
           {
             "@type": "OpeningHoursSpecification",
@@ -251,10 +252,11 @@ export function LocalBusinessJsonLd() {
         name: "Greenroots Bengaluru Office",
         description:
           "Greenroots office in HSR Layout, Bengaluru — in-person career audits, mentor sessions, and placement drives.",
-        telephone: SITE_PHONE_DISPLAY,
+        telephone: BENGALURU_OFFICE.phone,
         email: EMAIL_BENGALURU,
         address: BENGALURU_ADDRESS,
         geo: BENGALURU_GEO,
+        hasMap: BENGALURU_OFFICE.mapUrl,
         openingHoursSpecification: [
           {
             "@type": "OpeningHoursSpecification",

@@ -59,7 +59,7 @@ const STUDENT_FAQS = [
   },
   {
     q: "Where are Greenroots' campuses located?",
-    a: "We have two offices. Our Hyderabad headquarters is at Unit 206, Manjeera Majestic Commercial, Opp. JNTU, Next to Lulu Mall, Kukatpally, Hyderabad 500072 (email: admin@g-roots.in), and our Bengaluru office is at 2nd floor, 804, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102 (email: adminblr@g-roots.in). Both are reachable on our official number +91 954 954 3898.",
+    a: "We have two offices. Our Hyderabad headquarters is at Unit 206, Manjeera Majestic Commercial, Opp. JNTU, Next to Lulu Mall, Kukatpally, Hyderabad 500072 (email: admin@g-roots.in, phone: +91 954 954 3898), and our Bengaluru office is at 2nd floor, 804, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102 (email: adminblr@g-roots.in, phone: +91 99868 83898).",
   },
   {
     q: "Are these courses beginner-friendly or do I need prior experience?",

@@ -105,19 +105,25 @@ export function Locations() {
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
                 Now serving Bengaluru / Bangalore
               </h3>
-              <div className="mt-4 flex items-start gap-3 text-sm sm:text-base text-slate-300 leading-relaxed">
-                <MapPin className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
-                <span>
-                  2nd floor, 804, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102
+              <a
+                href={BENGALURU_OFFICE.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 flex items-start gap-3 text-sm sm:text-base text-slate-300 hover:text-white leading-relaxed group transition-colors"
+                title="Open Bengaluru Office in Google Maps"
+              >
+                <MapPin className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                <span className="underline decoration-emerald-400/40 underline-offset-4 group-hover:decoration-emerald-400">
+                  {BENGALURU_OFFICE.fullAddress}
                 </span>
-              </div>
+              </a>
               <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm sm:text-base text-slate-300 leading-relaxed">
                 <a
-                  href={SITE_PHONE_TEL}
+                  href={BENGALURU_OFFICE.phoneHref}
                   className="inline-flex items-center gap-3 font-bold text-white hover:text-emerald-300 transition-colors"
                 >
                   <Phone className="h-5 w-5 text-emerald-400 shrink-0" />
-                  {SITE_PHONE_DISPLAY}
+                  {BENGALURU_OFFICE.phone}
                 </a>
                 <a
                   href={`mailto:${BENGALURU_OFFICE.email}`}
